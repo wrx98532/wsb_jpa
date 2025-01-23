@@ -20,7 +20,7 @@ public class AddressDaoTest
     public void testShouldFindAddressById() {
         // given
         // when
-        AddressEntity addressEntity = addressDao.findOne(9999L);
+        AddressEntity addressEntity = addressDao.findOne(999L);
         // then
         assertThat(addressEntity).isNotNull();
         assertThat(addressEntity.getPostalCode()).isEqualTo("62-030");

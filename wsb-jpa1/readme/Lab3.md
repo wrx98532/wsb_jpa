@@ -14,4 +14,16 @@ Napisz testy do zapytan w nastepujacej formie:
 3. do zapytania nr 3 - test DAO
 4. do zapytania nr 4 - test DAO
 
+W PatientEntity, nad relacja do VisitEntity dodaj adnotacje
+
+@Fetch(FetchMode.SELECT)
+
+a fetchType zmien na EAGER
+Uruchom test w ktorym pobierany jest Patient z wieloma wizytami. W logach zaobserwuj, jak wyglada pobieranie dodatkowych encji (ile i jakie sqle).
+Nastepnie zmien adnotacje na
+
+@Fetch(FetchMode.JOIN)
+
+i powtorz test i obserwacje. Wnioski zapisz na dole tego pliku i skomituj.
+
 Do wybranej encji dodaj wersjonowanie, oraz napisz test (w DAO) sprawdzajacy rownolegla modyfikacje (OptimisticLock)
