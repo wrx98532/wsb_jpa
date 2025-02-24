@@ -4,5 +4,5 @@ import com.jpacourse.dto.AddressTO;
 
 public interface AddressService
 {
-    public AddressTO findById(final Long id);
+    AddressTO findById(final Long id);
 }
