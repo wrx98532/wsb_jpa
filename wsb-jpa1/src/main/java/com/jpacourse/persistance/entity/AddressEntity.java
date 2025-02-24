@@ -1,4 +1,4 @@
-package com.jpacourse.persistence.entity;
+package com.jpacourse.persistance.entity;
 
 
 import jakarta.persistence.*;
