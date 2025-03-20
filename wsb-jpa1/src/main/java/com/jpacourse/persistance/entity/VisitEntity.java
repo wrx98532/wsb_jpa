@@ -20,11 +20,6 @@ public class VisitEntity {
 
 	// -------------------RELACJE-------------------
 
-	//Relacja jednokierunkowa 1:wielu od strony Visit (rodzic) do MedicalTreatment (dziecko)
-	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	//@JoinColumn(name = "MedTreatment_ID", referencedColumnName = "ID")
-	//private MedicalTreatmentEntity MedicalTreatment;
-
 	//Relacja dwukierunkowa 1:wielu Doctor - Visit
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Doctorr_ID", referencedColumnName = "ID")

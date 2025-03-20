@@ -51,3 +51,15 @@ insert into Patient (date_of_birth, Addresss_ID, id, email, first_Name, last_Nam
 
 insert into Visit (Doctorr_ID, id, Patientt_ID, time, description)
             values (101, 501, 202, '2025-04-10 09:00', 'Umówiona wizyta do dermatologa');
+
+insert into Visit (Doctorr_ID, id, Patientt_ID, time, description)
+            values (102, 502, 202, '2025-04-10 10:00', 'Umówiona wizyta do chirurga');
+
+insert into Medical_Treatment (id, Visit_ID, description, type)
+            values (801, 501, 'EKG', 'EKG');
+
+insert into Medical_Treatment (id, Visit_ID, description, type)
+            values (802, 501, 'RTG', 'RTG');
+
+insert into Medical_Treatment (id, Visit_ID, description, type)
+            values (803, 502, 'RTG', 'RTG');
