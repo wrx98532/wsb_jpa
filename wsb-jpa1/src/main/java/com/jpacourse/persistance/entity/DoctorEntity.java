@@ -4,6 +4,8 @@ import com.jpacourse.persistance.enums.Specialization;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "DOCTOR")
 public class DoctorEntity {
@@ -29,6 +31,19 @@ public class DoctorEntity {
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
+
+	// -------------------RELACJE-------------------
+
+	//Relacja jednokierunkowa 1:1 od strony Doctor (rodzic) do Address (dziecko)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "Address_ID")
+	private AddressEntity address;
+
+	//Relacja dwukierunkowa 1:wielu Doctor - Visit
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
+	private List<VisitEntity> visitEntities;
+
+	// -------------------KONIEC RELACJI-------------------
 
 	public Long getId() {
 		return id;

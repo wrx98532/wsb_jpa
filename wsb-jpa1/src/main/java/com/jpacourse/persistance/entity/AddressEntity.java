@@ -3,6 +3,8 @@ package com.jpacourse.persistance.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "ADDRESS")
 public class AddressEntity {
@@ -18,6 +20,8 @@ public class AddressEntity {
 	private String addressLine2;
 
 	private String postalCode;
+
+
 
 	public Long getId() {
 		return id;
