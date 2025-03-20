@@ -35,7 +35,7 @@ public class PatientEntity {
 
 	//Relacja jednokierunkowa 1:1 od strony Patient (rodzic) do Address (dziecko)
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "Addresss_ID")
+	@JoinColumn(name = "Addresss_ID", referencedColumnName = "ID")
 	private AddressEntity address;
 
 	//Relacja dwukierunkowa 1:wielu Patient - Visit

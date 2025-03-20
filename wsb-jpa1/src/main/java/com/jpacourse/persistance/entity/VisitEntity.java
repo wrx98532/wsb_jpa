@@ -22,17 +22,17 @@ public class VisitEntity {
 
 	//Relacja jednokierunkowa 1:wielu od strony Visit (rodzic) do MedicalTreatment (dziecko)
 	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	//@JoinColumn(name = "Visit_ID")
+	//@JoinColumn(name = "MedTreatment_ID", referencedColumnName = "ID")
 	//private MedicalTreatmentEntity MedicalTreatment;
 
 	//Relacja dwukierunkowa 1:wielu Doctor - Visit
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Doctor_ID")
+	@JoinColumn(name = "Doctorr_ID", referencedColumnName = "ID")
 	private DoctorEntity doctor;
 
 	//Relacja dwukierunkowa 1:wielu Patient - Visit
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PATIENT_ID")
+	@JoinColumn(name = "Patientt_ID", referencedColumnName = "ID")
 	private PatientEntity patient;
 
 	// -------------------KONIEC RELACJI-------------------
