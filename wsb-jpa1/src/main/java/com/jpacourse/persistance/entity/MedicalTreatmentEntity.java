@@ -18,10 +18,14 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
+	// -------------------RELACJE-------------------
+
 	//Relacja jednokierunkowa wiele:1 - wiele MedicalTreatment do jednej wizyty
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
 	private VisitEntity visit;
+
+	// -------------------KONIEC RELACJI-------------------
 
 	public Long getId() {
 		return id;
