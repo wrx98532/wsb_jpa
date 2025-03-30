@@ -13,6 +13,7 @@ public class VisitEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false)
 	private String description;
 
 	@Column(nullable = false)
@@ -22,12 +23,12 @@ public class VisitEntity {
 
 	//Relacja dwukierunkowa 1:wielu Doctor - Visit
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Doctorr_ID", referencedColumnName = "ID")
+	@JoinColumn(name = "Doctor_ID", referencedColumnName = "ID")
 	private DoctorEntity doctor;
 
 	//Relacja dwukierunkowa 1:wielu Patient - Visit
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Patientt_ID", referencedColumnName = "ID")
+	@JoinColumn(name = "Patient_ID", referencedColumnName = "ID")
 	private PatientEntity patient;
 
 	// -------------------KONIEC RELACJI-------------------
