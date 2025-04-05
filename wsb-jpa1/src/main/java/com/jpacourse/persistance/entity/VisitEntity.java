@@ -31,6 +31,11 @@ public class VisitEntity {
 	@JoinColumn(name = "Patient_ID", referencedColumnName = "ID")
 	private PatientEntity patient;
 
+	//Relacja dwukierunkowa 1:wielu Visit - Mediacal Treatment
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
+	private VisitEntity visit;
+
 	// -------------------KONIEC RELACJI-------------------
 
 	public Long getId() {
