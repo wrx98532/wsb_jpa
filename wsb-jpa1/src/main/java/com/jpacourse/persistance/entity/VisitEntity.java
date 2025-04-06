@@ -2,6 +2,7 @@ package com.jpacourse.persistance.entity;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -32,9 +33,16 @@ public class VisitEntity {
 	private PatientEntity patient;
 
 	//Relacja dwukierunkowa 1:wielu Visit - Mediacal Treatment
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
-	private VisitEntity visit;
+	//@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
+	//private VisitEntity visit;
+
+
+	//Relacja dwukierunkowa 1:wielu Visit - Medical Treatmens
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "treatments")
+	private List<MedicalTreatmentEntity> medicaltreatment;
+
+
 
 	// -------------------KONIEC RELACJI-------------------
 
@@ -60,6 +68,38 @@ public class VisitEntity {
 
 	public void setTime(LocalDateTime time) {
 		this.time = time;
+	}
+
+    public DoctorEntity getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(DoctorEntity doctor) {
+        this.doctor = doctor;
+    }
+
+    public PatientEntity getPatient() {
+        return patient;
+    }
+
+    public void setPatient(PatientEntity patient) {
+        this.patient = patient;
+    }
+
+    //public VisitEntity getVisit() {
+     //   return visit;
+   // }
+
+    //public void setVisit(VisitEntity visit) {
+     //   this.visit = visit;
+    //}
+
+	public List<MedicalTreatmentEntity> getMedicaltreatment() {
+		return medicaltreatment;
+	}
+
+	public void setMedicaltreatment(List<MedicalTreatmentEntity> medicaltreatment) {
+		this.medicaltreatment = medicaltreatment;
 	}
 
 }

@@ -20,18 +20,13 @@ public class MedicalTreatmentEntity {
 
 	// -------------------RELACJE-------------------
 
-	public VisitEntity getVisit() {
-		return visit;
-	}
 
 	//Relacja jednokierunkowa wiele:1 - wiele MedicalTreatment do jednej wizyty
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
 	private VisitEntity visit;
 
-	public void setVisit(VisitEntity visit) {
-		this.visit = visit;
-	}
+
 // -------------------KONIEC RELACJI-------------------
 
 	public Long getId() {
@@ -56,6 +51,14 @@ public class MedicalTreatmentEntity {
 
 	public void setType(TreatmentType type) {
 		this.type = type;
+	}
+
+	public VisitEntity getVisit() {
+		return visit;
+	}
+
+	public void setVisit(VisitEntity visit) {
+		this.visit = visit;
 	}
 
 }

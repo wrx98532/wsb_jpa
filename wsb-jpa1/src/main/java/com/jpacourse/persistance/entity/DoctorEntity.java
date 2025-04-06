@@ -35,26 +35,14 @@ public class DoctorEntity {
 
 	// -------------------RELACJE-------------------
 
-	public AddressEntity getAddress() {
-		return address;
-	}
 
-	public List<VisitEntity> getVisitEntities() {
-		return visitEntities;
-	}
 
 	//Relacja jednokierunkowa 1:1 od strony Doctor (rodzic) do Address (dziecko)
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "Address_ID", referencedColumnName = "ID")
 	private AddressEntity address;
 
-	public void setAddress(AddressEntity address) {
-		this.address = address;
-	}
 
-	public void setVisitEntities(List<VisitEntity> visitEntities) {
-		this.visitEntities = visitEntities;
-	}
 
 	//Relacja dwukierunkowa 1:wielu Doctor - Visit
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
@@ -118,4 +106,19 @@ public class DoctorEntity {
 		this.specialization = specialization;
 	}
 
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+
+	public void setVisitEntities(List<VisitEntity> visitEntities) {
+		this.visitEntities = visitEntities;
+	}
+
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public List<VisitEntity> getVisitEntities() {
+		return visitEntities;
+	}
 }
