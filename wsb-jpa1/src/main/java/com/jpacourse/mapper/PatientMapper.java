@@ -10,35 +10,43 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Component
 public class PatientMapper {
 
-    public PatientTO toPatientTOWithPastVisits(PatientEntity entity) {
+    // Metoda mapująca z PatientEntity na PatientTO
+    public static PatientTO mapToTO(PatientEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+
+        List<VisitTO> pastVisits = entity.getVisits().stream()
+                .filter(v -> v.getTime().isBefore(java.time.LocalDateTime.now())) // Tylko wizyty z przeszłości
+                .map(visit -> {
+                    // Mapowanie wizyty
+                    String doctorFullName = visit.getDoctor().getFirstName() + " " + visit.getDoctor().getLastName();
+                    List<String> treatmentTypes = visit.getTreatments().stream()
+                            .map(t -> t.getType().toString()) // Pobranie typów leczenia
+                            .collect(Collectors.toList());
+
+                    return new VisitTO(
+                            visit.getTime(),
+                            doctorFullName,
+                            treatmentTypes
+                    );
+                })
+                .collect(Collectors.toList());
+
         return new PatientTO(
-                entity.getId(),
                 entity.getFirstName(),
                 entity.getLastName(),
-                entity.getDateOfBirth(),  // <- dodatkowe pole nie-string
-                entity.getVisitEntities().stream()
-                        .filter(v -> v.getTime().isBefore(LocalDateTime.now()))
-                        .map(this::toVisitTO)
-                        .toList()
+                entity.getEmail(),
+                entity.getTelephoneNumber(),
+                entity.getPatientNumber(),
+                entity.getDateOfBirth(),
+                pastVisits
         );
-    }
-
-    public VisitTO toVisitTO(VisitEntity entity) {
-        return new VisitTO(
-                entity.getTime(),
-                entity.getDoctor().getFirstName() + " " + entity.getDoctor().getLastName(),
-                entity.getMedicaltreatment().stream()
-                        .map(this::toTreatmentTO)
-                        .toList()
-        );
-    }
-
-    public MedicalTreatmentTO toTreatmentTO(MedicalTreatmentEntity entity) {
-        return new MedicalTreatmentTO(entity.getId(), entity.getType());
     }
 }

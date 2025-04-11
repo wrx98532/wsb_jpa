@@ -39,8 +39,17 @@ public class VisitEntity {
 
 
 	//Relacja dwukierunkowa 1:wielu Visit - Medical Treatmens
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "treatments")
-	private List<MedicalTreatmentEntity> medicaltreatment;
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "treatments")
+	//private List<MedicalTreatmentEntity> medicaltreatment;
+
+
+
+	@ManyToMany
+	@JoinTable(
+			name = "visit_treatments",
+			joinColumns = @JoinColumn(name = "visit_id"),
+			inverseJoinColumns = @JoinColumn(name = "treatment_id"))
+	private List<MedicalTreatmentEntity> treatments;
 
 
 
@@ -70,36 +79,29 @@ public class VisitEntity {
 		this.time = time;
 	}
 
-    public DoctorEntity getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(DoctorEntity doctor) {
-        this.doctor = doctor;
-    }
-
-    public PatientEntity getPatient() {
-        return patient;
-    }
-
-    public void setPatient(PatientEntity patient) {
-        this.patient = patient;
-    }
-
-    //public VisitEntity getVisit() {
-     //   return visit;
-   // }
-
-    //public void setVisit(VisitEntity visit) {
-     //   this.visit = visit;
-    //}
-
-	public List<MedicalTreatmentEntity> getMedicaltreatment() {
-		return medicaltreatment;
+	public DoctorEntity getDoctor() {
+		return doctor;
 	}
 
-	public void setMedicaltreatment(List<MedicalTreatmentEntity> medicaltreatment) {
-		this.medicaltreatment = medicaltreatment;
+	public void setDoctor(DoctorEntity doctor) {
+		this.doctor = doctor;
 	}
+
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
+
+	public List<MedicalTreatmentEntity> getTreatments() {
+		return treatments;
+	}
+
+	public void setTreatments(List<MedicalTreatmentEntity> treatments) {
+		this.treatments = treatments;
+	}
+
 
 }

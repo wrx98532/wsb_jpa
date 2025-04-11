@@ -4,25 +4,26 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class VisitTO {
-    private Long id;
-    private LocalDateTime date;
+
+    private LocalDateTime time;
     private String doctorFullName;
-    private List<MedicalTreatmentTO> treatments;
+    private List<String> treatmentTypes;
 
-    public Long getId() {
-        return id;
+    public VisitTO() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public VisitTO(LocalDateTime time, String doctorFullName, List<String> treatmentTypes) {
+        this.time = time;
+        this.doctorFullName = doctorFullName;
+        this.treatmentTypes = treatmentTypes;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getTime() {
+        return time;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setTime(LocalDateTime time) {
+        this.time = time;
     }
 
     public String getDoctorFullName() {
@@ -33,13 +34,12 @@ public class VisitTO {
         this.doctorFullName = doctorFullName;
     }
 
-    public List<MedicalTreatmentTO> getTreatments() {
-        return treatments;
+    public List<String> getTreatmentTypes() {
+        return treatmentTypes;
     }
 
-    public void setTreatments(List<MedicalTreatmentTO> treatments) {
-        this.treatments = treatments;
+    public void setTreatmentTypes(List<String> treatmentTypes) {
+        this.treatmentTypes = treatmentTypes;
     }
-
-
 }
+

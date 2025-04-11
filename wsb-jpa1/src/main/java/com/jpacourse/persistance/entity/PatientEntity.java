@@ -1,6 +1,7 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -39,25 +40,23 @@ public class PatientEntity {
 	@JoinColumn(name = "Address_ID", referencedColumnName = "ID")
 	private AddressEntity address;
 
-	public AddressEntity getAddress() {
-		return address;
-	}
 
-	public List<VisitEntity> getVisitEntities() {
-		return visitEntities;
-	}
+
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<VisitEntity> visits = new ArrayList<>();
 
 	//Relacja dwukierunkowa 1:wielu Patient - Visit
-	@OneToMany(mappedBy = "patient")
-	private List<VisitEntity> visitEntities;
+	//@OneToMany(mappedBy = "patient")
+	//private List<VisitEntity> visitEntities;
 
 	public void setAddress(AddressEntity address) {
 		this.address = address;
 	}
-
-	public void setVisitEntities(List<VisitEntity> visitEntities) {
-		this.visitEntities = visitEntities;
+	public AddressEntity getAddress() {
+		return address;
 	}
+
+
 // -------------------KONIEC RELACJI-------------------
 
 	public Long getId() {
@@ -116,4 +115,11 @@ public class PatientEntity {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public List<VisitEntity> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<VisitEntity> visits) {
+		this.visits = visits;
+	}
 }

@@ -1,27 +1,26 @@
 package com.jpacourse.service;
 
-import com.jpacourse.dto.PatientTO;
-import com.jpacourse.mapper.PatientMapper;
-import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.Repository.PatientRepository;
+import com.jpacourse.dto.PatientTO;
+import com.jpacourse.persistance.entity.PatientEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.jpacourse.mapper.PatientMapper;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PatientService {
 
     private final PatientRepository patientRepository;
-    private final PatientMapper patientMapper;
 
-    public PatientService(PatientRepository patientRepository, PatientMapper patientMapper) {
+    @Autowired
+    public PatientService(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
-        this.patientMapper = patientMapper;
     }
 
-    public List<PatientTO> getAllPatientsWithPastVisits() {
-        return patientRepository.findAll().stream()
-                .map(patient -> patientMapper.toPatientTOWithPastVisits(patient))
-                .toList();
+    public PatientTO getPatientWithPastVisits(Long id) {
+        Optional<PatientEntity> entityOptional = patientRepository.findById(id);
+        return entityOptional.map(PatientMapper::mapToTO).orElse(null);
     }
+}
