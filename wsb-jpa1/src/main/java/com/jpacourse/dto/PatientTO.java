@@ -10,23 +10,25 @@ public class PatientTO {
     private String email;
     private String telephoneNumber;
     private String patientNumber;
+    private String status;  // Dodane nowe pole
     private LocalDate dateOfBirth;
     private List<VisitTO> pastVisits;
 
-    public PatientTO() {
-    }
+    public PatientTO() {}
 
     public PatientTO(String firstName, String lastName, String email, String telephoneNumber,
-                     String patientNumber, LocalDate dateOfBirth, List<VisitTO> pastVisits) {
+                     String patientNumber, String status, LocalDate dateOfBirth, List<VisitTO> pastVisits) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
         this.patientNumber = patientNumber;
+        this.status = status;
         this.dateOfBirth = dateOfBirth;
         this.pastVisits = pastVisits;
     }
 
+    // Gettery i settery
     public String getFirstName() {
         return firstName;
     }
@@ -81,5 +83,14 @@ public class PatientTO {
 
     public void setPastVisits(List<VisitTO> pastVisits) {
         this.pastVisits = pastVisits;
+    }
+
+    // Getter i setter dla statusu
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

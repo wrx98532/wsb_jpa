@@ -7,17 +7,17 @@ public class VisitTO {
 
     private LocalDateTime time;
     private String doctorFullName;
-    private List<String> treatmentTypes;
+    private List<String> treatments;  // List of treatment types from MedicalTreatment
 
-    public VisitTO() {
-    }
+    public VisitTO() {}
 
-    public VisitTO(LocalDateTime time, String doctorFullName, List<String> treatmentTypes) {
+    public VisitTO(LocalDateTime time, String doctorFullName, List<String> treatments) {
         this.time = time;
         this.doctorFullName = doctorFullName;
-        this.treatmentTypes = treatmentTypes;
+        this.treatments = treatments;
     }
 
+    // Gettery i settery
     public LocalDateTime getTime() {
         return time;
     }
@@ -34,12 +34,11 @@ public class VisitTO {
         this.doctorFullName = doctorFullName;
     }
 
-    public List<String> getTreatmentTypes() {
-        return treatmentTypes;
+    public List<String> getTreatments() {
+        return treatments;
     }
 
-    public void setTreatmentTypes(List<String> treatmentTypes) {
-        this.treatmentTypes = treatmentTypes;
+    public void setTreatments(List<String> treatments) {
+        this.treatments = treatments;
     }
 }
-
