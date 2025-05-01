@@ -8,57 +8,57 @@ import jakarta.persistence.*;
 @Table(name = "MEDICAL_TREATMENT")
 public class MedicalTreatmentEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false)
-	private String description;
+    @Column(nullable = false)
+    private String description;
 
-	@Enumerated(EnumType.STRING)
-	private TreatmentType type;
+    @Enumerated(EnumType.STRING)
+    private TreatmentType type;
 
-	// -------------------RELACJE-------------------
+    // -------------------RELACJE-------------------
 
 
-	//Relacja jednokierunkowa wiele:1 - wiele MedicalTreatment do jednej wizyty
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
-	private VisitEntity visit;
+    //Relacja jednokierunkowa wiele:1 - wiele MedicalTreatment do jednej wizyty
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
+    private VisitEntity visit;
 
 
 // -------------------KONIEC RELACJI-------------------
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public TreatmentType getType() {
-		return type;
-	}
+    public TreatmentType getType() {
+        return type;
+    }
 
-	public void setType(TreatmentType type) {
-		this.type = type;
-	}
+    public void setType(TreatmentType type) {
+        this.type = type;
+    }
 
-	public VisitEntity getVisit() {
-		return visit;
-	}
+    public VisitEntity getVisit() {
+        return visit;
+    }
 
-	public void setVisit(VisitEntity visit) {
-		this.visit = visit;
-	}
+    public void setVisit(VisitEntity visit) {
+        this.visit = visit;
+    }
 
 }

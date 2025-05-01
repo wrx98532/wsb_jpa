@@ -10,98 +10,98 @@ import jakarta.persistence.*;
 @Table(name = "VISIT")
 public class VisitEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false)
-	private String description;
+    @Column(nullable = false)
+    private String description;
 
-	@Column(nullable = false)
-	private LocalDateTime time;
+    @Column(nullable = false)
+    private LocalDateTime time;
 
-	// -------------------RELACJE-------------------
+    // -------------------RELACJE-------------------
 
-	//Relacja dwukierunkowa 1:wielu Doctor - Visit
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Doctor_ID", referencedColumnName = "ID")
-	private DoctorEntity doctor;
+    //Relacja dwukierunkowa 1:wielu Doctor - Visit
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Doctor_ID", referencedColumnName = "ID")
+    private DoctorEntity doctor;
 
-	//Relacja dwukierunkowa 1:wielu Patient - Visit
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Patient_ID", referencedColumnName = "ID")
-	private PatientEntity patient;
+    //Relacja dwukierunkowa 1:wielu Patient - Visit
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Patient_ID", referencedColumnName = "ID")
+    private PatientEntity patient;
 
-	//Relacja dwukierunkowa 1:wielu Visit - Mediacal Treatment
-	//@ManyToOne(fetch = FetchType.LAZY)
-	//@JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
-	//private VisitEntity visit;
-
-
-	//Relacja dwukierunkowa 1:wielu Visit - Medical Treatmens
-	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "treatments")
-	//private List<MedicalTreatmentEntity> medicaltreatment;
+    //Relacja dwukierunkowa 1:wielu Visit - Mediacal Treatment
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "Visit_ID", referencedColumnName = "ID")
+    //private VisitEntity visit;
 
 
-
-	@ManyToMany
-	@JoinTable(
-			name = "visit_treatments",
-			joinColumns = @JoinColumn(name = "visit_id"),
-			inverseJoinColumns = @JoinColumn(name = "treatment_id"))
-	private List<MedicalTreatmentEntity> treatments;
+    //Relacja dwukierunkowa 1:wielu Visit - Medical Treatmens
+    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "treatments")
+    //private List<MedicalTreatmentEntity> medicaltreatment;
 
 
 
-	// -------------------KONIEC RELACJI-------------------
+    @ManyToMany
+    @JoinTable(
+            name = "visit_treatments",
+            joinColumns = @JoinColumn(name = "visit_id"),
+            inverseJoinColumns = @JoinColumn(name = "treatment_id"))
+    private List<MedicalTreatmentEntity> treatments;
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public String getDescription() {
-		return description;
-	}
+    // -------------------KONIEC RELACJI-------------------
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public LocalDateTime getTime() {
-		return time;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setTime(LocalDateTime time) {
-		this.time = time;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public DoctorEntity getDoctor() {
-		return doctor;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setDoctor(DoctorEntity doctor) {
-		this.doctor = doctor;
-	}
+    public LocalDateTime getTime() {
+        return time;
+    }
 
-	public PatientEntity getPatient() {
-		return patient;
-	}
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
 
-	public void setPatient(PatientEntity patient) {
-		this.patient = patient;
-	}
+    public DoctorEntity getDoctor() {
+        return doctor;
+    }
 
-	public List<MedicalTreatmentEntity> getTreatments() {
-		return treatments;
-	}
+    public void setDoctor(DoctorEntity doctor) {
+        this.doctor = doctor;
+    }
 
-	public void setTreatments(List<MedicalTreatmentEntity> treatments) {
-		this.treatments = treatments;
-	}
+    public PatientEntity getPatient() {
+        return patient;
+    }
+
+    public void setPatient(PatientEntity patient) {
+        this.patient = patient;
+    }
+
+    public List<MedicalTreatmentEntity> getTreatments() {
+        return treatments;
+    }
+
+    public void setTreatments(List<MedicalTreatmentEntity> treatments) {
+        this.treatments = treatments;
+    }
 
 
 }

@@ -11,115 +11,128 @@ import org.w3c.dom.stylesheets.LinkStyle;
 @Table(name = "PATIENT")
 public class PatientEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false)
-	private String firstName;
+    @Column(nullable = false)
+    private String firstName;
 
-	@Column(nullable = false)
-	private String lastName;
+    @Column(nullable = false)
+    private String lastName;
 
-	@Column(nullable = false)
-	private String telephoneNumber;
+    @Column(nullable = false)
+    private String telephoneNumber;
 
-	@Column(nullable = false)
-	private String email;
+    @Column(nullable = false)
+    private String email;
 
-	@Column(nullable = false)
-	private String patientNumber;
+    @Column(nullable = false)
+    private String patientNumber;
 
-	@Column(nullable = false)
-	private LocalDate dateOfBirth;
+    @Column(nullable = false)
+    private LocalDate dateOfBirth;
 
-	// -------------------RELACJE-------------------
+    @Column(nullable = false)
+    private String status;  // Dodane nowe pole do testu
 
-	//Relacja jednokierunkowa 1:1 od strony Patient (rodzic) do Address (dziecko)
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "Address_ID", referencedColumnName = "ID")
-	private AddressEntity address;
+    // -------------------RELACJE-------------------
+
+    //Relacja jednokierunkowa 1:1 od strony Patient (rodzic) do Address (dziecko)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Address_ID", referencedColumnName = "ID")
+    private AddressEntity address;
 
 
 
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<VisitEntity> visits = new ArrayList<>();
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VisitEntity> visits = new ArrayList<>();
 
-	//Relacja dwukierunkowa 1:wielu Patient - Visit
-	//@OneToMany(mappedBy = "patient")
-	//private List<VisitEntity> visitEntities;
+    //Relacja dwukierunkowa 1:wielu Patient - Visit
+    //@OneToMany(mappedBy = "patient")
+    //private List<VisitEntity> visitEntities;
 
-	public void setAddress(AddressEntity address) {
-		this.address = address;
-	}
-	public AddressEntity getAddress() {
-		return address;
-	}
+    public void setAddress(AddressEntity address) {
+        this.address = address;
+    }
+    public AddressEntity getAddress() {
+        return address;
+    }
 
 
 // -------------------KONIEC RELACJI-------------------
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getTelephoneNumber() {
-		return telephoneNumber;
-	}
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
 
-	public void setTelephoneNumber(String telephoneNumber) {
-		this.telephoneNumber = telephoneNumber;
-	}
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getPatientNumber() {
-		return patientNumber;
-	}
+    public String getPatientNumber() {
+        return patientNumber;
+    }
 
-	public void setPatientNumber(String patientNumber) {
-		this.patientNumber = patientNumber;
-	}
+    public void setPatientNumber(String patientNumber) {
+        this.patientNumber = patientNumber;
+    }
 
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-	public List<VisitEntity> getVisits() {
-		return visits;
-	}
+    public List<VisitEntity> getVisits() {
+        return visits;
+    }
 
-	public void setVisits(List<VisitEntity> visits) {
-		this.visits = visits;
-	}
+    public void setVisits(List<VisitEntity> visits) {
+        this.visits = visits;
+    }
+
+    // Getter i Setter dla statusu
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }
