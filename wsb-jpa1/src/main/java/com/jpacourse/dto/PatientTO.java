@@ -1,3 +1,4 @@
+
 package com.jpacourse.dto;
 
 import java.time.LocalDate;
@@ -5,6 +6,7 @@ import java.util.List;
 
 public class PatientTO {
 
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -13,11 +15,13 @@ public class PatientTO {
     private String status;  // Dodane nowe pole
     private LocalDate dateOfBirth;
     private List<VisitTO> pastVisits;
+    private AddressTO address;
 
     public PatientTO() {}
 
-    public PatientTO(String firstName, String lastName, String email, String telephoneNumber,
-                     String patientNumber, String status, LocalDate dateOfBirth, List<VisitTO> pastVisits) {
+    public PatientTO(Long id, String firstName, String lastName, String email, String telephoneNumber,
+                     String patientNumber, String status, LocalDate dateOfBirth, List<VisitTO> pastVisits, AddressTO address) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -26,9 +30,18 @@ public class PatientTO {
         this.status = status;
         this.dateOfBirth = dateOfBirth;
         this.pastVisits = pastVisits;
+        this.address = address;
     }
 
     // Gettery i settery
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -85,12 +98,19 @@ public class PatientTO {
         this.pastVisits = pastVisits;
     }
 
-    // Getter i setter dla statusu
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public AddressTO getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressTO address) {
+        this.address = address;
     }
 }

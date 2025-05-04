@@ -1,88 +1,57 @@
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (1, '11 Listopada 23', '  ', 'Gdańsk', '80-180');
+-- Addresses
+INSERT INTO address (id, address_line1, address_line2, city, postal_code)
+VALUES (1, 'Main St 1', '', 'CityA', '10000'),
+       (2, 'Second St 2', '', 'CityB', '20000'),
+       (3, 'Third St 3', '', 'CityC', '30000'),
+       (4, 'Fourth St 4', '', 'CityD', '40000'),
+       (5, 'Fifth Ave 5', '', 'CityE', '50000'),
+       (6, 'Sixth Blvd 6', '', 'CityF', '60000'),
+       (7, 'Seventh Rd 7', '', 'CityG', '70000'),
+       (100, 'Test Patient Address', '', 'TestCity', '80000'),
+       (101, 'Test Doctor Address', '', 'TestCity', '80001');
 
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (2, 'Różana 18', 'Poznań-Wilda', 'Poznań', '61-577');
+-- Doctors
+INSERT INTO doctor (id, address_id, first_name, last_name, telephone_number, email, doctor_number, specialization)
+VALUES (1, 1, 'Alice', 'Smith', '111111111', 'alice.smith@clinic.com', 'DOC001', 'GP'),
+       (2, 2, 'Bob', 'Jones', '222222222', 'bob.jones@clinic.com', 'DOC002', 'DERMATOLOGIST'),
+       (3, 3, 'Carol', 'White', '333333333', 'carol.white@clinic.com', 'DOC003', 'OCULIST'),
+       (4, 4, 'David', 'Black', '444444444', 'david.black@clinic.com', 'DOC004', 'SURGEON'),
+       (5, 5, 'Eve', 'Green', '555555555', 'eve.green@clinic.com', 'DOC005', 'GP'),
+       (2001, 101, 'Gregory', 'House', '555123456', 'greg.house@hospital.com', 'DOC2001', 'GP');
 
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (3, 'Śliska 29', 'Śródmieście', 'Warszawa', '00-127');
+-- Patients
+INSERT INTO patient (id, first_name, last_name, address_id, telephone_number, email, patient_number, status, date_of_birth)
+VALUES (1, 'John', 'Doe', 1, '123456789', 'john.doe@example.com', 'PAT001', 'active', '1980-01-01'),
+       (2, 'Jane', 'Doe', 2, '987654321', 'jane.doe@example.com', 'PAT002', 'inactive', '1990-05-15'),
+       (3, 'Jim', 'Beam', 3, '555555555', 'jim.beam@example.com', 'PAT003', 'active', '1975-12-31'),
+       (4, 'Janet', 'Smith', 4, '444444444', 'janet.smith@example.com', 'PAT004', 'inactive', '2000-07-20'),
+       (5, 'Jack', 'Daniels', 5, '666666666', 'jack.daniels@example.com', 'PAT005', 'active', '1985-03-10'),
+       (6, 'Julia', 'Roberts', 6, '777777777', 'julia.roberts@example.com', 'PAT006', 'inactive', '1995-09-25'),
+       (7, 'Jeremy', 'Clarkson', 7, '888888888', 'jeremy.clarkson@example.com', 'PAT007', 'active', '1970-11-11'),
+       (8, 'Jessica', 'Alba', 1, '999999999', 'jessica.alba@example.com', 'PAT008', 'inactive', '2002-02-02'),
+       (1001, 'Lisa', 'Cuddy', 100, '555987654', 'lisa.cuddy@hospital.com', 'PAT1001', 'active', '1980-05-12');
 
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (4, 'Zawiła 6', 'Podgórze', 'Kraków', '30-442');
-
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (5, 'Świderska 120', 'Bielany', 'Warszawa', '03-128');
-
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (6, 'Wojska Polskiego 1', '  ', 'Głogów', '67-200');
-
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (7, 'Chrobrego Bolesława 6', '  ', 'Gniezno', '62-200');
-
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (8, 'Osiedle Poznańskie 45', '  ', 'Osiedle Poznańskie', '66-446');
-
-insert into address (id, address_line1, address_line2, city, postal_code)
-            values (9, 'Okole 15', '  ', 'Stargard Gdański', '83-200');
-
---insert into Doctor (Address_ID, id,  first_Name, last_Name, telephone_Number, email, doctor_Number, specialization)
---            values (901, 101, 'Marek', 'Kowalski', '501777321', 'marek.kowalski@gmail.com','1','OCULIST');
---
---insert into Doctor (Address_ID, id, first_Name, last_Name, telephone_Number, email, doctor_Number, specialization)
---            values (902, 102, 'Tomasz', 'Guzikowski', '881223698', 'tomaszg123@gmail.com','2','SURGEON');
---
---insert into Doctor (Address_ID, id, first_Name, last_Name, telephone_Number, email, doctor_Number, specialization)
---            values (903, 103, 'Maria', 'Nowacka', '661452335', 'maria.nowacka@gmail.com','3','GP');
---
---insert into Doctor (Address_ID, id, first_Name, last_Name, telephone_Number, email, doctor_Number, specialization)
---            values (904, 104, 'Marek', 'Siodło', '505440002', 'mareksiodło2@gmail.com','4','DERMATOLOGIST');
---
---insert into Patient (date_of_birth, Address_ID, id, email, first_Name, last_Name, patient_Number, status, telephone_Number)
---            values ('1981-11-12', 905, 201, 'asiara1@onet.pl', 'Alicja', 'Siara', '1', 'Active', '505440002');
---
---insert into Patient (date_of_birth, Address_ID, id, email, first_Name, last_Name, patient_Number, status, telephone_Number)
---            values ('1979-10-31', 906, 202, 'asiarecki@wp.pl', 'Adam', 'Siarecki', '2', 'Active', '505001052');
---
---insert into Patient (date_of_birth, Address_ID, id, email, first_Name, last_Name, patient_Number, status, telephone_Number)
---            values ('1996-03-11', 907, 203, 'marcinp@wp.pl', 'Marcin', 'Pączek', '3', 'Active', '511123456');
---
---insert into Patient (date_of_birth, Address_ID, id, email, first_Name, last_Name, patient_Number, status, telephone_Number)
---            values ('1976-06-06', 908, 204, 'mateuszlisek@o2.pl', 'Mateusz', 'Lisek', '4', 'Active', '801778501');
---
---insert into Visit (Doctor_ID, id, Patient_ID, time, description)
---            values (101, 501, 201, '2025-04-10 09:00', 'Umówiona wizyta do dermatologa');
---
---insert into Visit (Doctor_ID, id, Patient_ID, time, description)
---            values (102, 502, 202, '2025-04-10 10:00', 'Umówiona wizyta do chirurga');
---
---insert into Medical_Treatment (id, Visit_ID, description, type)
---            values (801, 501, 'EKG', 'EKG');
---
---insert into Medical_Treatment (id, Visit_ID, description, type)
---            values (802, 501, 'RTG', 'RTG');
---
---insert into Medical_Treatment (id, Visit_ID, description, type)
---            values (803, 502, 'RTG', 'RTG');
-
--- Dodanie danych do tabeli Doctor (lekarze)
-INSERT INTO Doctor (id, Address_ID, first_name, last_name, telephone_number, email, doctor_number, specialization)
-VALUES
-    (1, 1, 'Anna', 'Kowalska', '123456789', 'anna.kowalska@example.com', 'DOC123', 'GP'),
-    (2, 3, 'Jan', 'Nowak', '987654321', 'jan.nowak@example.com', 'DOC456', 'OCULIST'),
-    (3, 2, 'Marek', 'Zieliński', '555666777', 'marek.zielinski@example.com', 'DOC789', 'DERMATOLOGIST');
-
--- Dodanie danych do tabeli Patient (pacjenci)
-INSERT INTO Patient (id, first_name, last_name, Address_ID, telephone_number, email, patient_number, status, date_of_birth)
-VALUES
-    (1, 'Piotr', 'Szymanski',4, '123321123', 'piotr.szymanski@example.com', 'PAT123', 'active', '1985-07-15'),
-    (2, 'Maria', 'Kowalska',6, '234432234', 'maria.kowalska@example.com', 'PAT456', 'active', '1992-02-20'),
-    (3, 'Katarzyna', 'Wójcik',7, '345543345', 'katarzyna.wojcik@example.com', 'PAT789', 'active', '1987-10-25');
-
--- Dodanie wizyt do tabeli Visit (wizyty)
-INSERT INTO Visit (description, time, patient_id, doctor_id)
-VALUES
-    ('Kontrola po operacji', '2023-03-15T10:00:00', 1, 2),  -- Piotr Szymanski, Jan Nowak
-    ('Konsultacja kardiologiczna', '2023-03-20T12:30:00', 1, 1),  -- Piotr Szymanski, Anna Kowalska
-    ('Dermatologiczna kontrola', '2023-04-01T09:00:00', 3, 3),  -- Katarzyna Wójcik, Marek Zieliński
-    ('Rehabilitacja po kontuzji', '2023-04-05T15:00:00', 2, 2),  -- Maria Kowalska, Jan Nowak
-    ('Przegląd ogólny', '2023-04-08T08:00:00', 2, 1);  -- Maria Kowalska, Anna Kowalska
+-- Visits
+-- Visits (let DB generate IDs)
+INSERT INTO visit (description, time, patient_id, doctor_id)
+VALUES ('Checkup', '2023-01-01T10:00:00', 1, 1),
+       ('Consultation', '2023-01-10T11:00:00', 1, 2),
+       ('Follow-up', '2023-02-01T09:00:00', 1, 1),
+       ('Dermatology', '2023-03-01T14:00:00', 2, 2),
+       ('General', '2023-04-01T08:00:00', 3, 1),
+       ('Annual', '2023-05-01T12:00:00', 3, 1),
+       ('Special', '2023-06-01T15:00:00', 3, 2),
+       ('Surgery', '2023-07-01T09:30:00', 4, 4),
+       ('Eye Exam', '2023-08-01T10:30:00', 5, 3),
+       ('Therapy', '2023-09-01T11:00:00', 6, 5),
+       ('Consultation', '2023-10-01T12:00:00', 7, 1),
+       ('Checkup', '2023-11-01T13:00:00', 8, 2),
+       ('Follow-up', '2023-12-01T14:00:00', 1, 1),
+       ('Dermatology', '2024-01-01T15:00:00', 2, 2),
+       ('General', '2024-02-01T16:00:00', 3, 1),
+       ('Annual', '2024-03-01T17:00:00', 3, 1),
+       ('Special', '2024-04-01T18:00:00', 3, 2),
+       ('Surgery', '2024-05-01T19:00:00', 4, 4),
+       ('Eye Exam', '2024-06-01T20:00:00', 5, 3),
+       ('Therapy', '2024-07-01T21:00:00', 6, 5),
+       ('Initial Consultation', '2024-05-01T09:00:00', 1001, 2001);

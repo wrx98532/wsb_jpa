@@ -1,3 +1,4 @@
+
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDate;
@@ -5,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
-import org.w3c.dom.stylesheets.LinkStyle;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "PATIENT")
@@ -14,6 +16,9 @@ public class PatientEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Version
+    private Long version;
 
     @Column(nullable = false)
     private String firstName;
@@ -38,19 +43,13 @@ public class PatientEntity {
 
     // -------------------RELACJE-------------------
 
-    //Relacja jednokierunkowa 1:1 od strony Patient (rodzic) do Address (dziecko)
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "Address_ID", referencedColumnName = "ID")
     private AddressEntity address;
 
-
-
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
     private List<VisitEntity> visits = new ArrayList<>();
-
-    //Relacja dwukierunkowa 1:wielu Patient - Visit
-    //@OneToMany(mappedBy = "patient")
-    //private List<VisitEntity> visitEntities;
 
     public void setAddress(AddressEntity address) {
         this.address = address;
@@ -58,9 +57,6 @@ public class PatientEntity {
     public AddressEntity getAddress() {
         return address;
     }
-
-
-// -------------------KONIEC RELACJI-------------------
 
     public Long getId() {
         return id;
@@ -126,7 +122,6 @@ public class PatientEntity {
         this.visits = visits;
     }
 
-    // Getter i Setter dla statusu
     public String getStatus() {
         return status;
     }
@@ -135,4 +130,7 @@ public class PatientEntity {
         this.status = status;
     }
 
+    public Long getVersion() {
+        return version;
+    }
 }
