@@ -27,3 +27,7 @@ Nastepnie zmien adnotacje na
 i powtorz test i obserwacje. Wnioski zapisz na dole tego pliku i skomituj.
 
 Do wybranej encji dodaj wersjonowanie, oraz napisz test (w DAO) sprawdzajacy rownolegla modyfikacje (OptimisticLock)
+
+Wnioski:
+Przy użyciu FetchMode.JOIN ładowana jest encja główna i relacje w jednym zapytaniu z użyciem JOIN.
+Przy użyciu FetchMode.SELECT ładowana jest encja główna a dopiero potem osobno wykonywane są zapytania SELECT.
