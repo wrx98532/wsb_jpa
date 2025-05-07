@@ -8,6 +8,7 @@ import java.util.List;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.data.annotation.Version;
 
 @Entity
 @Table(name = "PATIENT")
@@ -48,7 +49,7 @@ public class PatientEntity {
     private AddressEntity address;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SELECT)
+    @Fetch(FetchMode.JOIN)
     private List<VisitEntity> visits = new ArrayList<>();
 
     public void setAddress(AddressEntity address) {
