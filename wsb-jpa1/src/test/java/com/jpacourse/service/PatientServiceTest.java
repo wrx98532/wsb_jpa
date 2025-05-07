@@ -70,7 +70,7 @@ public class PatientServiceTest {
         assertThat(patient).isNotNull();
         assertThat(patient.getId()).isEqualTo(patientId);
         // Check extra field (replace 'EXPECTED_VALUE' with your actual expected value)
-        assertThat(patient.getStatus()).isEqualTo("EXPECTED_VALUE");
+        assertThat(patient.getStatus()).isEqualTo("1001L");
 
         // Check visits
         assertThat(patient.getPastVisits()).isNotNull();
